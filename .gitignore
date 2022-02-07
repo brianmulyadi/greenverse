@@ -1,0 +1,3 @@
+# ignore .csv and .xlsx files
+*.csv
+*.xlsx
