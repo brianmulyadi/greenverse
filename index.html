@@ -2,13 +2,61 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Greenverse</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <script src="https://use.fontawesome.com/e34bb7fb2b.js"></script>
     </head>
     <body>
         
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Greenverse 🌱</h1>
+                <p class="subtitle">Database for carbon emission targets of companies around the world</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="column is-6">
+                <div class="columns">
+                    <div class="column is-9">
+                        <input type="text" class="input is-rounded is-one-third" placeholder="i.e. Apple, Microsoft">
+                    </div>
+                    <div class="column">
+                        <button class="button is-rounded">Search</button>
+                    </div>
+                </div>                  
+            </div>
+            <div class="block"></div> <!-- spacer -->
+            <table class="table is-striped is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Target</th>
+                        <th>Deadline</th>
+                        <th>Last Updated</th>
+                        <th>Time Remaining</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Apple <span><a href="https://apple.com" target="_blank"><i class="fa fa-info-circle has-text-grey-light"></i></a></span></td>
+                        <td>Carbon Neutral</td>
+                        <td>2040</td>
+                        <td>19 Mar 2020</td>
+                        <td>8 yrs 5 mths 20 days</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung</td>
+                        <td>Carbon Neutral</td>
+                        <td>2040</td>
+                        <td>1 Jan 2020</td>
+                        <td>8 yrs 5 mths 20 days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
         <!-- javascript -->
         <script src="app.js"></script>
