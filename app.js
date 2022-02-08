@@ -842,14 +842,34 @@ console.log(currentDate);
 // SELECT ITEMS
 const testContainer = document.querySelector('.test-container');
 const tableBody = document.querySelector('.table-body');
+const searchInput = document.getElementById('search-input');
+const nameFilter = document.getElementById('name-filter');
+const timeFilter = document.getElementById('time-filter');
 
 // EVENT LISTENERS
 window.addEventListener('DOMContentLoaded',() => {
-    displayCompanies();
+    displayCompanies(companies);
+})
+
+searchInput.addEventListener('keyup', (e) => {
+    let value = '';
+    if (e.key === 'Backspace') {
+        value = searchInput.textContent.slice(0,-1);
+        searchInput.textContent = value;
+    } else {
+        value = searchInput.textContent += e.key;
+    }
+    console.log(searchInput.textContent, value);
+    const filteredCompanies = searchTable(value, companies);
+    displayCompanies(filteredCompanies);
+})
+
+nameFilter.addEventListener('click', () => {
+    console.log('name filter clicked');
 })
 
 // FUNCTIONS
-function displayCompanies() {
+function displayCompanies(companies) {
     let display = companies.map((item) => {
         const futureTime = item["Unix Date"]*1000;
         getRemainingTime(futureTime);
@@ -889,3 +909,16 @@ function format(x) {
     }
     return x
 };
+
+function searchTable(value, data) {
+    const filteredData = [];
+    for (let i = 0; i < data.length; i++) {
+        value = value.toLowerCase();
+        const name = data[i]['Company Name'].toLowerCase();
+
+        if (name.includes(value)) {
+            filteredData.push(data[i])
+        }
+    }
+    return filteredData;
+}
