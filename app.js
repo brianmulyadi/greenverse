@@ -6,6 +6,7 @@
 // FETCH FUNCTION
 let companies = [];
 
+/*
 fetch('./db.json')
     .then(res => res.json())
     .then(resData => {
@@ -13,6 +14,20 @@ fetch('./db.json')
         displayCompanies(companies);
     })
     .catch(err => console.error(err));
+*/
+
+const fetchData = async () => {
+    try {
+        const response = await fetch('./db.json');
+        const data = await response.json();
+        companies = data;
+        displayCompanies(companies);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+fetchData();
 
 // TODAY'S DATE
 const currentDate = new Date().getTime();
