@@ -6,15 +6,13 @@
 // FETCH FUNCTION
 let companies = [];
 
-const fetchPromise = fetch('./db.json');
-fetchPromise.then(res => res.json())
+fetch('./db.json')
+    .then(res => res.json())
     .then(resData => {
         companies = resData;
         displayCompanies(companies);
     })
-    .catch(err => {
-    console.error(err);
-})
+    .catch(err => console.error(err));
 
 // TODAY'S DATE
 const currentDate = new Date().getTime();
