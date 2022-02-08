@@ -1,5 +1,5 @@
-# greenverse
- a site to monitor green targets of companies
+# Greenverse
+ A static site to monitor green targets of companies around the world [Greenverse](https://github.com/brianmulyadi/greenverse/tree/main)
 
 Data source: [Carbon Intelligence](https://carbon.ci/insights/companies-with-net-zero-targets/)
 
