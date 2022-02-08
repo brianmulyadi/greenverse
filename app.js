@@ -837,7 +837,6 @@ const companies = [
 
 // TODAY'S DATE
 const currentDate = new Date().getTime();
-console.log(currentDate);
 
 // SELECT ITEMS
 const testContainer = document.querySelector('.test-container');
@@ -845,6 +844,10 @@ const tableBody = document.querySelector('.table-body');
 const searchInput = document.getElementById('search-input');
 const nameFilter = document.getElementById('name-filter');
 const timeFilter = document.getElementById('time-filter');
+
+// FLAGS
+let nameFlag = true;
+let timeFlag = true;
 
 // EVENT LISTENERS
 window.addEventListener('DOMContentLoaded',() => {
@@ -859,13 +862,53 @@ searchInput.addEventListener('keyup', (e) => {
     } else {
         value = searchInput.textContent += e.key;
     }
-    console.log(searchInput.textContent, value);
+    // console.log(searchInput.textContent, value);
     const filteredCompanies = searchTable(value, companies);
     displayCompanies(filteredCompanies);
 })
 
 nameFilter.addEventListener('click', () => {
-    console.log('name filter clicked');
+    let sorted = [];
+    if (nameFlag) {
+        sorted = companies.sort((a,b) => {
+            if (a["Company Name"].toLowerCase() < b["Company Name"].toLowerCase()) {
+                return -1;
+            } else if (a["Company Name"].toLowerCase() > b["Company Name"].toLowerCase()) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+        nameFlag = false;
+    } else {
+        sorted = companies.sort((a,b) => {
+            if (a["Company Name"].toLowerCase() < b["Company Name"].toLowerCase()) {
+                return 1;
+            } else if (a["Company Name"].toLowerCase() > b["Company Name"].toLowerCase()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        nameFlag = true;
+    }
+    displayCompanies(sorted);
+})
+
+timeFilter.addEventListener('click', () => {
+    let sorted = [];
+    if (timeFlag) {
+        sorted = companies.sort((a,b) => {
+            return a.Deadline - b.Deadline;
+        });
+        timeFlag = false;
+    } else {
+        sorted = companies.sort((a,b) => {
+            return b.Deadline - a.Deadline;
+        });
+        timeFlag = true;
+    }
+    displayCompanies(sorted);
 })
 
 // FUNCTIONS
